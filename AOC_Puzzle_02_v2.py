@@ -12,15 +12,16 @@ num_valid = 0
 
 for item in content_list:
   thing = re.split('[- :]', item)
-  #print(thing)
+  # print(thing)
 
-  first = int(thing[0])
-  third = int(thing[1])
+  pos_1 = int(thing[0])
+  pos_2 = int(thing[1])
   target = thing[2]
   pword = thing[4]
 
-
-  if target==pword[0] and target!=pword[2]:
+  if target == pword[pos_1-1] and target != pword[pos_2-1]:
+    num_valid += 1
+  elif target != pword[pos_1-1] and target == pword[pos_2-1]:
     num_valid += 1
 
 print("Valid", num_valid)
