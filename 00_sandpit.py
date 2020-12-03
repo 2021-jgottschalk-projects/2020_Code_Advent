@@ -1,24 +1,10 @@
-import re
+to_mult = [85, 272, 66, 73, 45]
 
-txt = "1-3 a: cbade"
+ans = 1
 
-print()
+for item in to_mult:
+    ans *= item
 
-thing = re.split('[- :]', txt)
-print(thing)
+print(ans)
 
-target = thing[2]
-pword = thing[4]
 
-print(pword[0])
-print(pword[2])
-
-print(target)
-
-if target == pword[0] and target != pword[2]:
-  print("valid")
-elif target != pword[0] and target == pword[2]:
-  print("valid")
-
-else:
-  print("no")
