@@ -11,6 +11,8 @@ f.close()
 # Set up counter...
 num_valid = 0
 
+valid_list = []
+
 for item in content_list:
     # num_colons = item.count(":")
     num_byr = item.count("byr:")
@@ -29,5 +31,9 @@ for item in content_list:
 
     if total == 7:
         num_valid += 1
+        valid_list.append(item)
+
 
 print("Number of valid passports: ", num_valid)
+
+print(valid_list)
