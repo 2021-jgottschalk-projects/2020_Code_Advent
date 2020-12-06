@@ -53,6 +53,8 @@ for item in maybe_valid:
 
     result = re.search(height_pattern, item)
 
+    height_points = 0
+
     if result is not None:
         all_height = result.group()
 
@@ -63,7 +65,7 @@ for item in maybe_valid:
             height = all_height[4:6]
             height_points = check_int(height, 59, 76)
 
-    hair_pattern = r"hcl:#\d{6}"
+    hair_pattern = r"hcl:#(\d|[a-f]){6}"
     hair_result = re.search(hair_pattern, item)
 
     if hair_result is not None:
@@ -71,29 +73,36 @@ for item in maybe_valid:
     else:
         hair_points = 0
 
-
     valid_eyes = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
 
     eye_pattern = r"ecl:\w{3}"
     eye_pattern = re.search(eye_pattern, item)
 
-    print(eye_pattern)
+    eye_points = 0
 
     if eye_pattern is not None:
         eyes = eye_pattern.group()
         eyes_only = eyes[4:7]
-        print("eyes:", eyes_only)
-
         if eyes_only in valid_eyes:
             eye_points = 1
         else:
             eye_points = 0
 
+    pid_pattern = r"pid:\d{9}"
+    pid_result = re.search(pid_pattern, item)
 
-    all_points = [byr_points, eyr_points, iyr_points, height_points, hair_points, eye_points]
+    if pid_result is not None:
+        pid_points = 1
+
+    else:
+        pid_points = 0
+
+    all_points = [byr_points, eyr_points, iyr_points, height_points, hair_points, eye_points, pid_points]
 
     total = sum(all_points)
     print(total)
 
+    if total == 7:
+        num_valid += 1
 
 print("Number of valid passports: ", num_valid)
