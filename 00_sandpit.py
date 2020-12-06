@@ -1,15 +1,13 @@
-def GK_binary(decimal, symbol):
-    total = 0
-    for item in decimal:
-        if item == symbol:
-            total = total * 2 + 1
-        else:
-            total = total * 2
+content_list = [
+    "abc", "abc", "abac", "aaaa", "b"
+]
 
-    return total
+sum = 0
 
-seat = "FFFBBBFRRR"
-row = GK_binary(seat[:7], "B")
-seat_ID = GK_binary(seat[7:], "R")
-print(row)
-print(seat_ID)
+for item in content_list:
+    unique = set(item)
+    print(unique)
+    sum += len(unique)
+
+print(sum)
+
