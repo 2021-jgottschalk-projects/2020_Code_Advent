@@ -1,37 +1,26 @@
-data_list = [
-    ['kimczeyaqwbs', 'pwmsf', 'wgmfus', 'lofjwnms', 'rwsum'],
-['cxns', 'c', 'cbv', 'c']
-    ]
+import re
 
-grand_total = 0
+all_rules = []
 
-for item in data_list:
-    people = len(item)
-    common = 0
-    total = 0
+# patterns
+white_bag = r"\d bright white (bag| bags)"
 
-    # Generate entire string
-    item_string = ""
-    for word in item:
-        item_string += word
-    print("Item string", item_string)
-    print()
+data_string = "light red bags contain 1 bright white bag, " \
+              "2 muted yellow bags. " \
+              "dark orange bags contain 3 bright white bags, " \
+              "4 muted yellow bags. bright white bags contain 1 shiny gold bag. " \
+              "muted yellow bags contain 2 shiny gold bags, 9 faded blue bags. " \
+              "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags. " \
+              "dark olive bags contain 3 faded blue bags, 4 dotted black bags. " \
+              "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags. " \
+              "faded blue bags contain no other bags. dotted black bags contain no other bags."
 
-    # get letters of first item in list
-    for letter in item[0]:
-        print(letter)
-        letter_count = item_string.count(letter)
-        print("letter count: ", letter_count)
 
-        if letter_count == people:
-            total += 1
+whole_rules = data_string.split(". ")
 
-    grand_total += total
+for item in whole_rules:
+    rules = re.split(r"contain | ,", item)
+    all_rules.append(rules)
 
-    print("total", total)
-
-    print()
-
-print("Grand Total: ", grand_total)
-
+print(all_rules)
 
