@@ -1,29 +1,5 @@
 import re
 
-with open('2020_advent_07_data.txt') as f:
-#with open('example.txt') as f:
-  data = f.read().splitlines()
-
-# Set up our regex rules
-reOuter = re.compile('^([\w ]*) bags contain ')
-reInner = re.compile('(\d{1,}) ([\w ]*) bag(?:s)?')
-
-# Parse the data into a rules dictionary
-rules = {}
-
-for rule in data:
-  # First get the outer bag
-  outer = reOuter.findall(rule)[0]
-  # Create key in the rules dictionary
-  rules[outer] = {}
-  # Find the color and number of bags that the outer bag hold
-  inner = reInner.findall(rule)
-  # Add these rules to the outer bag's key
-  for bag in inner:
-    rules[outer][bag[1]] = int(bag[0])   # Tuple is (num, 'color')
-
-
-
 def lookIn(outerBag, trail):
   """
   This function looks in the rules dictionary to see if the outer bag contains 'shiny gold'.
@@ -75,6 +51,29 @@ def star2():
   Solved by recursively counting the number of bags in each color of bag.
   """
   print(countBags('shiny gold'))
+
+
+with open('2020_advent_07_data.txt') as f:
+#with open('example.txt') as f:
+  data = f.read().splitlines()
+
+# Set up our regex rules
+reOuter = re.compile('^([\w ]*) bags contain ')
+reInner = re.compile('(\d{1,}) ([\w ]*) bag(?:s)?')
+
+# Parse the data into a rules dictionary
+rules = {}
+
+for rule in data:
+  # First get the outer bag
+  outer = reOuter.findall(rule)[0]
+  # Create key in the rules dictionary
+  rules[outer] = {}
+  # Find the color and number of bags that the outer bag hold
+  inner = reInner.findall(rule)
+  # Add these rules to the outer bag's key
+  for bag in inner:
+    rules[outer][bag[1]] = int(bag[0])   # Tuple is (num, 'color')
 
 star1()
 star2()
