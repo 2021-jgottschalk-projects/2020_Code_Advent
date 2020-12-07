@@ -7,11 +7,23 @@ f = open("2020_advent_07_data.txt", "r")
 
 content = f.read()
 
+content = "light red bags contain 1 bright white bag, " \
+              "2 muted yellow bags. " \
+              "dark orange bags contain 3 bright white bags, " \
+              "4 muted yellow bags. bright white bags contain 1 shiny gold bag. " \
+              "muted yellow bags contain 2 shiny gold bags, 9 faded blue bags. " \
+              "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags. " \
+              "dark olive bags contain 3 faded blue bags, 4 dotted black bags. " \
+              "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags. " \
+              "faded blue bags contain no other bags. dotted black bags contain no other bags."
+
 whole_rules = content.split(". ")
 
 f.close()
 
 all_rules = []
+
+
 
 for item in whole_rules:
     rules = re.split(r"contain | ,", item)
@@ -29,6 +41,7 @@ for color in colors:
         for thing in item:
             print(thing)
             print()
+            print("color list", colors)
 
             color_result = re.search(color, thing)
             if color_result is not None:
@@ -45,6 +58,6 @@ for color in colors:
 print("total: ", total)
 # answer not 104
 # it's not 6 either!
-# it's not 8, nor is it 9
+# it's not 8
 
 
