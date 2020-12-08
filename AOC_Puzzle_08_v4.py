@@ -33,7 +33,7 @@ def run_instructions(instruction_list):
                 already_run.append(step)
                 # input("continue? ")
 
-            print("Steps...", already_run)
+            # print("Steps...", already_run)
             if already_run.count(step) > 1:
                 print("Accelerator", accumulator)
                 print("broken")
@@ -44,8 +44,9 @@ def run_instructions(instruction_list):
 
 # Main routine goes here
 
+
 # write data from file
-f = open("2020_advent_08_data_small.txt", "r")
+f = open("2020_advent_08_data.txt", "r")
 
 content = f.read()
 instructions = content.splitlines()
@@ -58,11 +59,11 @@ for item in instructions:
     single = item.split(" ")
     all_instructions.append(single)
 
-print(all_instructions)
+# print(all_instructions)
 
 instruction_check = 0
 for item in all_instructions:
-    print("Instruction to switch", all_instructions[instruction_check][0])
+    # print("Instruction to switch", all_instructions[instruction_check][0])
     if all_instructions[instruction_check][0] == "jmp":
         all_instructions[instruction_check][0] = "nop"
 
@@ -75,5 +76,6 @@ for item in all_instructions:
     instruction_check += 1
 
 # switch instruction and test it...
+# jpm to nop, 826 too high
 
 
