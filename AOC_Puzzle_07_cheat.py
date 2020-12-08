@@ -1,5 +1,6 @@
 import re
 
+
 def lookIn(outerBag, trail):
   """
   This function looks in the rules dictionary to see if the outer bag contains 'shiny gold'.
