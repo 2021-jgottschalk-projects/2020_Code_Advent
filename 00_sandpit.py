@@ -1,26 +1,12 @@
-import re
+addition_list = [72411414, 78244973, 89011657, 112923589, 91455753, 87306899, 90675247, 94458958, 91090610, 105713231, 137282719, 108211332, 110549131, 110710483, 112694288, 114082556, 114486132]
 
-all_rules = []
+target = 1721308972
 
-# patterns
-white_bag = r"\d bright white (bag| bags)"
+total = 0
+for item in addition_list:
+    total += item
 
-data_string = "light red bags contain 1 bright white bag, " \
-              "2 muted yellow bags. " \
-              "dark orange bags contain 3 bright white bags, " \
-              "4 muted yellow bags. bright white bags contain 1 shiny gold bag. " \
-              "muted yellow bags contain 2 shiny gold bags, 9 faded blue bags. " \
-              "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags. " \
-              "dark olive bags contain 3 faded blue bags, 4 dotted black bags. " \
-              "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags. " \
-              "faded blue bags contain no other bags. dotted black bags contain no other bags."
-
-
-whole_rules = data_string.split(". ")
-
-for item in whole_rules:
-    rules = re.split(r"contain | ,", item)
-    all_rules.append(rules)
-
-print(all_rules)
+print("Target: {}, Total: {}".format(target, total))
+difference = target - total
+print("Diference", difference)
 
