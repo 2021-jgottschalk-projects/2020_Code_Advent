@@ -40,7 +40,10 @@ one_three_str = ""
 for item in one_three_list:
     item = str(item)
     one_three_str += item
- 
+print()
+print("**** 1 / 3 string ****")
+print(one_three_str)
+print()
 num_replaced = 0
 
 find_11 = ""
@@ -53,6 +56,8 @@ while find_11 != -1:
         print(one_three_str)
 
 num_2s = one_three_str.count('2')
+print("Removed Triplets: ", num_2s)
+print()
 
 find_21 = ""
 while find_21 != -1:
@@ -64,6 +69,8 @@ while find_21 != -1:
 
 
 num_z = one_three_str.count('z')
+print("z's: ", num_z)
+print()
 
 total = num_2s + num_z
 print(total)
