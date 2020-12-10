@@ -1,12 +1,30 @@
-addition_list = [72411414, 78244973, 89011657, 112923589, 91455753, 87306899, 90675247, 94458958, 91090610, 105713231, 137282719, 108211332, 110549131, 110710483, 112694288, 114082556, 114486132]
+string = "3111311313"
+   
+num_replaced = 0
 
-target = 1721308972
+find_11 = ""
+while find_11 != -1:
+    find_11 = string.find("11")
 
-total = 0
-for item in addition_list:
-    total += item
+    if find_11 != -1:
+        string = string.replace("11", "2")
+        num_replaced += 1
+        print(string)
 
-print("Target: {}, Total: {}".format(target, total))
-difference = target - total
-print("Diference", difference)
+num_2s = string.count('2')
+
+find_21 = ""
+while find_21 != -1:
+    find_21 = string.find("21")
+
+    if find_21 != -1:
+        string = string.replace("21", "z")
+        print(string)
+
+
+num_z = string.count('z')
+
+total = num_2s + num_z
+print(total)
+print("changes: {}".format(2**total))
 
